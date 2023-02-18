@@ -5,8 +5,22 @@ import sbt.{ Classpaths, Credentials, Def, Resolver, Test, addCompilerPlugin, ta
 import wartremover.WartRemover.autoImport.{ wartremoverErrors, wartremoverExcluded, Wart, Warts }
 import xerial.sbt.Sonatype.autoImport.{ sonatypeProfileName, sonatypePublishToBundle }
 import org.scalafmt.sbt.ScalafmtPlugin.autoImport._
+import com.github.j5ik2o.sbt.wrapper.gen.SbtWrapperGenPlugin.autoImport._
+import com.github.j5ik2o.sbt.wrapper.gen.model.ClassDesc
+import sbt.Keys._
+import sbt.{ Classpaths, Credentials, Def, Resolver, Test, addCompilerPlugin, taskKey, _ }
+import wartremover.WartRemover.autoImport.{ wartremoverErrors, wartremoverExcluded, Wart, Warts }
+import xerial.sbt.Sonatype.autoImport.{ sonatypeProfileName, sonatypePublishToBundle }
+import org.scalafmt.sbt.ScalafmtPlugin.autoImport._
 
 object Settings {
+  val sdkBaseName     = settingKey[String]("sdk base name")
+  val scalaVersion211 = "2.11.12"
+  val scalaVersion212 = "2.12.10"
+  val scalaVersion213 = "2.13.1"
+
+  val awsSdk2Version = "2.11.1"
+  
   val sdkBaseName     = settingKey[String]("sdk base name")
   val scalaVersion211 = "2.11.12"
   val scalaVersion212 = "2.12.10"
